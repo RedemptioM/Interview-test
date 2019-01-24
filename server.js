@@ -10,7 +10,7 @@ let newAddTime;
 let aveTime;
 
 app.get("/getCounter", (req, res) => {
-  if (startTime) {
+  if (startTime && addTime) {
     aveTime = timeArr.reduce((total, cur) => total + cur) / timeArr.length;
     console.log(aveTime);
     startTime = false;
@@ -19,6 +19,13 @@ app.get("/getCounter", (req, res) => {
       Result:
         "You have got the predicted time, please send GET request to '/predict' to check the result."
     });
+  } else if (startTime && !addTime) {
+    return res
+      .status(400)
+      .json({
+        error:
+          "You should send some POST requests to '/addCounter' before send GET request to this url again."
+      });
   }
   startTime = new Date().getTime();
   console.log(startTime);
