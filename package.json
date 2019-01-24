@@ -1,0 +1,14 @@
+{
+  "name": "interview-project",
+  "version": "1.0.0",
+  "description": "For interview online test",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Damon Ma",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
